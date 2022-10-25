@@ -1,0 +1,47 @@
+//Banco de dados
+
+CREATE TABLE TabelaA(
+  Nome varchar(50) NOT NULL
+)
+
+GO
+
+CREATE TABLE TabelaB(
+  Nome varchar(50) NOT NULL
+)
+INSERT INTO TabelaA VALUES('Flavia')
+INSERT INTO TabelaA VALUES('Jose')
+INSERT INTO TabelaA VALUES('Laura')
+INSERT INTO TabelaA VALUES('Fernando')
+
+INSERT INTO TabelaB VALUES('Carlos')
+INSERT INTO TabelaB VALUES('Joao')
+INSERT INTO TabelaB VALUES('Laura')
+INSERT INTO TabelaB VALUES('Fernando')
+
+SELECT a.Nome, b.Nome
+FROM TabelaA as A
+INNER JOIN TabelaB as B
+                on a.Nome = b.Nome
+//Neste caso INNER JOIN irá retornar os nomes repetidos na tabela A e B (Laura e Fernando)
+
+SELECT a.Nome, b.Nome
+FROM TabelaA as A
+LEFT JOIN TabelaB as B
+                on a.Nome = b.Nome
+//Neste caso LEFT JOIN irá retornar os nomes contidos na tabela A e os nomes repetidos na tabela B (Flávia, Jose, Laura e Fernando)
+
+
+SELECT a.Nome, b.Nome
+FROM TabelaA as A
+RIGHT JOIN TabelaB as B
+  on a.Nome = b.Nome
+
+//Neste caso RIGHT JOIN irá retornar os nomes repetidos na tabela A e todos constantes na tabela B (Carlos, Joao, Laura e Fernando)
+
+SELECT a.Nome, b.Nome
+FROM TabelaA as A
+FULL OUTER JOIN TabelaB as B
+    on a.Nome = b.Nome
+
+//Neste caso FULL OUTER JOIN irá retornar todos os nomes da tabela A e todos da tabela B (Flavia, Jose, Carlos, Joao, Laura e Fernando)
